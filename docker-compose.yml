@@ -1,0 +1,31 @@
+version: "3"
+services:
+  varnish:
+    image: varnish:stable
+    container_name: varnish
+    volumes:
+      - "./default.vcl:/etc/varnish/default.vcl"
+    ports:
+      - "80:80"
+    tmpfs:
+      - /var/lib/varnish:exec
+    environment:
+      - VARNISH_SIZE=2G  
+    command: "-p default_keep=300"
+    depends_on:
+      - "httpd" 
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    volumes:
+      - ./:/data/db
+    ports:
+      - "27017:27017"
+  varnish-test-api:
+    image: varnish-test-api:latest
+    container_name: varnish-test-api
+    environment:
+      - Database__Host=mongodb
+      - Database__DefaultAuthDatabase=varnish
+    ports:
+      - "7283:80"

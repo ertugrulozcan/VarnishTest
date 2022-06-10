@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Ertis.Extensions.AspNetCore" Version="5.1.7" />
+        <PackageReference Include="Ertis.MongoDB" Version="5.2.9" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\VarnishTest.Dao\VarnishTest.Dao.csproj" />
+      <ProjectReference Include="..\VarnishTest.Infrastructure\VarnishTest.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

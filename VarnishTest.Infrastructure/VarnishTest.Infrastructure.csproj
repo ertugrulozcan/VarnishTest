@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\VarnishTest.Abstractions\VarnishTest.Abstractions.csproj" />
+      <ProjectReference Include="..\VarnishTest.Dao\VarnishTest.Dao.csproj" />
+      <ProjectReference Include="..\VarnishTest.Dto\VarnishTest.Dto.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Ertis.Data" Version="5.1.6" />
+      <PackageReference Include="Ertis.MongoDB" Version="5.2.9" />
+      <PackageReference Include="TinyMapper" Version="3.0.3" />
+    </ItemGroup>
+
+</Project>
