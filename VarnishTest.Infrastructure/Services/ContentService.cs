@@ -5,7 +5,7 @@ using VarnishTest.Dto.Models;
 
 namespace VarnishTest.Infrastructure.Services;
 
-public class NewsService : ServiceBase<News, NewsDto>, INewsService
+public class ContentService : ServiceBase<News, NewsDto>, IContentService
 {
 	#region Constructors
 
@@ -13,7 +13,7 @@ public class NewsService : ServiceBase<News, NewsDto>, INewsService
 	/// Constructor
 	/// </summary>
 	/// <param name="newsRepository"></param>
-	public NewsService(INewsRepository newsRepository) : base(newsRepository)
+	public ContentService(INewsRepository newsRepository) : base(newsRepository)
 	{
 			
 	}

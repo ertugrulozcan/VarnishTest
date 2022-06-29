@@ -32,11 +32,27 @@ public class NewsController : ControllerBase
 	#endregion
 	
 	#region Methods
+	
+	[HttpGet("on")]
+	public IActionResult On()
+	{
+		this._logger.Log(LogLevel.Information, "/news/on");
+		this._newsService.On();
+		return this.Ok("News endpoint re-activated");
+	}
+	
+	[HttpGet("off")]
+	public IActionResult Off()
+	{
+		this._logger.Log(LogLevel.Information, "/news/off");
+		this._newsService.Off();
+		return this.Ok("News endpoint disabled");
+	}
 
 	[HttpGet("{id}")]
 	public async Task<IActionResult> Get([FromRoute] string id, [FromQuery] int wait)
 	{
-		this._logger.Log(LogLevel.Information, $"{nameof(NewsController)}/Get/{id}");
+		this._logger.Log(LogLevel.Information, $"/news/{id}");
 
 		if (wait > 0)
 		{
@@ -50,7 +66,7 @@ public class NewsController : ControllerBase
 	[HttpGet]
 	public async Task<IActionResult> Get([FromQuery] int wait)
 	{
-		this._logger.Log(LogLevel.Information, $"{nameof(NewsController)}/Get");
+		this._logger.Log(LogLevel.Information, "/news");
 		
 		if (wait > 0)
 		{
