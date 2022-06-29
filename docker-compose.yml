@@ -13,7 +13,7 @@ services:
       - VARNISH_SIZE=2G  
     command: "-p default_keep=300"
     depends_on:
-      - "httpd" 
+      - "varnish-test-api" 
   mongodb:
     image: mongo:latest
     container_name: mongodb
