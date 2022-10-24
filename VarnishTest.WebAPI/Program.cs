@@ -9,6 +9,10 @@ using VarnishTest.Infrastructure.Services;
 using VarnishTest.WebAPI.Adapters;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddResponseCompression(options =>
+{
+	options.EnableForHttps = true;
+});
 
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("Database"));
 builder.Services.AddSingleton<IDatabaseSettings>(serviceProvider => serviceProvider.GetRequiredService<IOptions<DatabaseSettings>>().Value);
@@ -30,6 +34,7 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 
+app.UseResponseCompression();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
